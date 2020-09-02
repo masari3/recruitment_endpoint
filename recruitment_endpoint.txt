@@ -1,0 +1,93 @@
+// EXAMPLE
+========================================
+// Register [POST]
+// Request
+{
+	"user_name":"Testing",
+	"user_email":"test@tester.com"
+}
+
+// Response
+{
+	"http_code":201,
+	"signature_key":"xaxaxa",
+	"message":"Register success, please remember you SIGNATURE KEY"
+}
+
+
+========================================
+// Product [GET]
+{
+	"http_code":200,
+	"items":[{
+		"product_id":"FXD",
+		"name":"Fixadura",
+		"price":"1500",
+		"stock":"10"
+	},{
+		"product_id":"HS500",
+		"name":"Hand Soap 500 ML",
+		"price":"800",
+		"stock":"50"
+	}]
+}
+
+
+========================================
+// Sales Insert [POST]
+// Request
+{
+  "signature_key": "xaxaxa",
+  "payment_type": "echannel",
+  "gross_amount": 9600,
+  "currency": "IDR",
+  "items" : [
+	{
+		"item_id": "ABC",
+		"qty":2,
+		"price": 1500,
+		"total": 3000
+	},
+	{
+		"item_id": "FHR",
+		"qty": 1,
+		"price": 1600,
+		"total": 1600
+	},
+	{
+		"item_id": "9EDJ",
+		"qty": 5,
+		"price": 1000,
+		"total": 5000
+	}
+  ]
+}
+
+// Response
+{
+	"http_code":201,
+	"sales_id":1,
+	"message":"Sales was inserted"
+}
+
+
+========================================
+// Sales List [POST]
+{
+	"signature_key": "xaxaxa"
+}
+
+// Response
+{
+	"http_code":200,
+	"items":[
+		{"sales_id":"1",
+		"signature_key":"xaxaxa",
+		"payment_type":"echannel",
+		"gross_amount":"9600",
+		"currency":"IDR",
+		"sales_status":"unpaid",
+		"created":"1564569486"
+	}],
+	"count":1
+}
